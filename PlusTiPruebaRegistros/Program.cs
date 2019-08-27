@@ -14,7 +14,6 @@ namespace PlusTiPruebaRegistros
         public static void Main(string[] args)
         {
             MainClass m = new MainClass();
-            m.InitSql();
             Stopwatch ListWatch = new Stopwatch();
             Stopwatch SubstrWatch = new Stopwatch();
             Stopwatch SplitWatchMultiple = new Stopwatch();
@@ -297,30 +296,6 @@ namespace PlusTiPruebaRegistros
                 }
             }
             return FilteredWords;
-        }
-
-
-
-        public void InitSql()
-        {
-            string dbstring = null;
-            SqlConnection connection;
-            SqlCommand command;
-            string sql = null;
-
-            dbstring = "Data Source=DESKTOP-LUR90N4;Initial Catalog=DBEstresometro;User ID=sa;Password=guatemala; Connect Timeout=60";
-            sql = "SELECT * FROM DatosGuardados";
-            connection = new SqlConnection(dbstring);
-            try{
-                connection.Open();
-                command = new SqlCommand(sql, connection);
-                command.ExecuteNonQuery();
-                command.Dispose();
-                connection.Close();
-                Console.WriteLine("Command executed!");
-            }catch(Exception ex){
-                Console.WriteLine(ex.Message);
-            }
         }
 
     }
